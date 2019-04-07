@@ -1,9 +1,8 @@
-name: unityhub
-version: '1.6.0'
-summary: UnityHub -- a standalone app to manage your Unity Projects and installations.
-description: A standalone application that streamlines the way you find, download, and manage your Unity Projects and 
-installations. In addition, you can manually add versions of the Editor that you have already installed on your machine 
-to your Hub.
+name: lutris
+version: '0.5.1.2'
+summary: Lutris client - Open Source gaming platform for GNU/Linux.
+description: Lutris is an open source gaming platform that makes gaming on 
+Linux easier by managing, installing and providing optimal settings for games.
   
 adopt-info: devmode # use 'strict' once you have the right plugs and slots
 
@@ -16,21 +15,25 @@ architectures:
   
 
 apps:
-  unrealengine:
-    command: bin/unityhub
+  lutris:
+    command: bin/lutris
     plugs:
       - home
       - network
       - removable-media
-      - opengl
 
 parts:
-unityhub:
-    plugin: 
-    source: 
+lutris:
+    plugin: python
+    python-version: python3
+    source: https://github.com/lutris/lutris.git
+    stage-packages:
+      - python-six
+      
     source-type: git
     override-pull: |
-     
+     git clone https://github.com/lutris/lutris.git src/github.com/lutris/lutris
+       cd src/github.com/lutris/lutris
       last_committed_tag="$(git describe --tags --abbrev=0)"
       last_committed_tag_ver="$(echo ${last_committed_tag} | sed 's/v//')"
       last_released_tag="$(snap info $SNAPCRAFT_PROJECT_NAME | awk '$1 == "beta:" { print $2 }')"
@@ -43,71 +46,15 @@ unityhub:
       snapcraftctl set-version "$(git describe --tags | sed 's/v//')"
       override-build: |
       export GOPATH=$PWD
-      cd src/github.com/
+      cd src/github.com/lutris/lutris
       env CGO_ENABLED=0 GOOS=linux \
       go build --ldflags "-s -w \
-        -X 'github.com//version.GitCommit=$(git rev-list -1 HEAD)' \
-        -X 'github.com/version.Version=$(git describe --tags --abbrev=0)'" \
-        -a -installsuffix cgo -o $SNAPCRAFT_PART_INSTALL/bin/unityhub
+        -X 'github.com/lutris/lutris/version.GitCommit=$(git rev-list -1 HEAD)' \
+        -X 'github.com/lutris/lutris/version.Version=$(git describe --tags --abbrev=0)'" \
+        -a -installsuffix cgo -o $SNAPCRAFT_PART_INSTALL/bin/lutris
     build-snaps:
       - 
    build-packages:
       - git
       - sed
-      - g++
-      - make
-      - libsdl1.2-dev
-      - libpng-dev
-      - libsdl-net1.2-dev
-      - libsdl-sound1.2-dev
-      - libasound2-dev
-    stage-packages:
-      - libsdl-sound1.2
-      - libsdl-net1.2
-      - libxcursor1
-      - libxi6
-      - libxinerama1
-      - libxrandr2
-      - libxrender1
-      - libopenal1
-      - libsndio6.1
-      - libspeex1
-      - libvorbisfile3
-      - libwayland-client0
-      - libwayland-cursor0
-      - libwayland-egl1-mesa
-      - libxkbcommon0
-      - libglu1-mesa
-      - libasound2
-      - libasyncns0
-      - libbsd0
-      - libcaca0
-      - libdbus-1-3
-      - libflac8
-      - libgcc1
-      - libgcrypt20
-      - libgl1
-      - libglvnd0
-      - libglx0
-      - libgpg-error0
-      - liblz4-1
-      - liblzma5
-      - libncursesw5
-      - libogg0
-      - libpng16-16
-      - libpulse0
-      - libsdl1.2debian
-      - libslang2
-      - libsndfile1
-      - libstdc++6
-      - libsystemd0
-      - libtinfo5
-      - libvorbis0a
-      - libvorbisenc2
-      - libwrap0
-      - libx11-6
-      - libxau6
-      - libxcb1
-      - libxdmcp6
-      - libxext6
-      - zlib1g
+     
