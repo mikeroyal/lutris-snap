@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lutris
+GenericName= gaming platform 
+Comment= Open Source gaming platform for GNU/Linux 
+Exec=lutris -p
+Icon=${SNAP}/meta/gui/lutris.png
+Terminal=false
+Type=Application
+Categories=Development;IDE;
