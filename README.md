@@ -1,10 +1,10 @@
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/45159366/55536929-df58ad00-566f-11e9-8bfe-03553b94fcd1.png">
+  <img src="https://user-images.githubusercontent.com/45159366/55680085-f09cf600-58c9-11e9-82df-a2e94d3dec74.png">
   <br />
-UnityHub
+Lutris
 </h1>
 
-<p align="center"><b>This is the snap for UnityHub, a standalone app to manage your Unity Projects and installations. It works on Ubuntu, Fedora, Debian, and other major Linux distributions. </p>
+<p align="center"><b>This is the snap for Lutris, an Open Source gaming platform for GNU/Linux . It works on Ubuntu, Fedora, Debian, and other major Linux distributions. </p>
 
 <!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
@@ -12,7 +12,7 @@ UnityHub
 </p>
 -->
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/45159366/55536766-6fe2bd80-566f-11e9-87bb-61817bd3eddb.png">
+  <img src="https://user-images.githubusercontent.com/45159366/55680082-eed33280-58c9-11e9-85da-e8f08f93b8cb.png">
   <br />
 </h1>
 
@@ -20,7 +20,8 @@ UnityHub
 
 ## Install
 
-    sudo snap install unityhub
+    sudo snap install wine-platform
+    sudo snap install lutris
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
