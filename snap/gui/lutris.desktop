@@ -6,4 +6,4 @@ Exec=lutris -p
 Icon=${SNAP}/meta/gui/lutris.png
 Terminal=false
 Type=Application
-Categories=Development;IDE;
+Categories=Games;
